@@ -35,15 +35,15 @@ string LinuxParser::OperatingSystem() {
 
 // DONE: An example of how to read data from the filesystem
 string LinuxParser::Kernel() {
-  string os, kernel;
+  string os, kernel,version;// <----- Declared a new variable version 
   string line;
   std::ifstream stream(kProcDirectory + kVersionFilename);
   if (stream.is_open()) {
     std::getline(stream, line);
     std::istringstream linestream(line);
-    linestream >> os >> kernel;
+    linestream >> os >> kernel>>version;// <-- Extracting the version in a variable version
   }
-  return kernel;
+  return version;//<---- Return the third variable
 }
 
 // BONUS: Update this to use std::filesystem
@@ -237,18 +237,24 @@ string LinuxParser::Ram(int pid) {
 string LinuxParser::Uid(int pid) {
   std::ifstream stream(kProcDirectory + std::to_string(pid) + kStatusFilename);
   std::istringstream linestream;
-  string line, key;
+  string line, key, value, result;
   while (stream.is_open()) {
     linestream.clear();
     std::getline(stream, line);
     linestream.str(line);
     linestream >> key;
+    /*
     if (key == "Uid:") {
       linestream >> key;
       break;
     }
+    */
+    linestream >> key >> value;
+      if (key == "Uid:") {
+        result = value;
+      }
   }
-  return key;
+  return value;
 }
 
 // TODO: Read and return the user associated with a process
