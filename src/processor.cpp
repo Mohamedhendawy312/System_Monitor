@@ -13,7 +13,7 @@ float Processor::Utilization() {
   double irq = std::stof(value[LinuxParser::kIRQ_]);
   double softirq = std::stof(value[LinuxParser::kSoftIRQ_]);
   double steal = std::stof(value[LinuxParser::kSteal_]);
-  double guest = std::stof(value[LinuxParser::kGuest_]);
+  //double guest = std::stof(value[LinuxParser::kGuest_]);
   double guest_nice = std::stof(value[LinuxParser::kGuestNice_]);
 
   float Total_CPU_time_since_boot =
