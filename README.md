@@ -1,5 +1,9 @@
 # Linux System Monitor
 
+![C++](https://img.shields.io/badge/C++-17-blue.svg?style=flat&logo=c%2B%2B)
+![CMake](https://img.shields.io/badge/CMake-2.6+-green.svg?style=flat&logo=cmake)
+![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg?style=flat)
+
 A terminal-based system monitor built with C++ and ncurses, similar to htop. Reads from the Linux `/proc` filesystem to display real-time system information.
 
 <img src="images/monitor.png"/>
